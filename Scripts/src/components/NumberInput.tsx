@@ -7,6 +7,11 @@ function NumberInput(props) {
 
   const addToValue = (value) => {
     value = Math.round((value + 0.1) * 10) / 10;
+
+    if(value > 1) {
+      value = 1;
+    }
+
     document.dispatchEvent(new CustomEvent('onUpdateNumberInput', {
       detail: {
         value:       value,
@@ -14,11 +19,17 @@ function NumberInput(props) {
         observation: props.observation
       }
     }));
+
     setItemState(value);
   };
 
   const subtractFromValue = (value) => {
     value = Math.round((value - 0.1) * 10) / 10;
+
+    if(value < 0) {
+      value = 0;
+    }
+
     document.dispatchEvent(new CustomEvent('onUpdateNumberInput', {
       detail: {
         value:       value,

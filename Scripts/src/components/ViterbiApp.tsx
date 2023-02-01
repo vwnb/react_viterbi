@@ -11,7 +11,7 @@ function ViterbiApp(props) {
   document.addEventListener('onUpdateNumberInput', (e) => {
     state.input.emission_probability[e.detail.weather][e.detail.observation] = e.detail.value;
     setState(Viterbi(state));
-  }
+  });
 
   return (
     <div>
