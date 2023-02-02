@@ -43,12 +43,10 @@ function TextInput(props) {
   }
 
   return (
-    <p>
-      <form onSubmit={handleSubmit}> 
-        <textarea value={itemState} onChange={handleUpdate}></textarea>&nbsp;
-        <input type="submit" value="Update" onClick={handleClick} />
-      </form>
-    </p>
+    <form onSubmit={handleSubmit}> 
+      <textarea value={itemState} onChange={handleUpdate}></textarea>&nbsp;
+      <input type="submit" value="Update" onClick={handleClick} />
+    </form>
   );
 }
 

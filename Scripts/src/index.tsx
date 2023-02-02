@@ -20,6 +20,14 @@ let initState = {
             'walk',
             'clean',
             'sleep',
+            'sleep',
+            'sleep',
+            'walk',
+            'shopp',
+            'clean',
+            'walk',
+            'shopp',
+            'sleep',
             'sleep'
         ],
         start_probability: {
