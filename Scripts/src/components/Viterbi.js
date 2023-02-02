@@ -1,6 +1,5 @@
 // Viterbi algorithm for finding hidden relationships
 function Viterbi(initState) {
-    console.log(initState);
 
     var V = [{}];
     var path = {};

@@ -24,7 +24,7 @@ function ViterbiApp(props) {
         <h3>What?</h3>
         <p>This is a demonstration of "hidden states" revealed by a Javascript implementation of the <a href="https://en.wikipedia.org/wiki/Viterbi_algorithm">Viterbi algorithm.</a></p>
         <h3>Insights</h3>
-        <p>Setting the emission probabilities to extremes like 0 and 1 has a less extreme effect than setting them around 0.4 to 0.6. This is useful when modeling a very sunny or very rainy weather.</p>
+        <p>Setting the emission probabilities to extremes like 0.1 and 0.9 has a less extreme effect than setting them around 0.2 steps away from each other. This is useful when modeling a very sunny or very rainy weather.</p>
         <p>The <a href="https://en.wikipedia.org/wiki/Hidden_Markov_model">Hidden Markov Models</a> act in mysterious ways but the function should be pure! Same input, same output.</p>
      </div>
       <Controls input={state.input} />

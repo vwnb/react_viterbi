@@ -5,43 +5,40 @@ function NumberInput(props) {
 
   const [itemState, setItemState] = useState(props.value);
 
+  /**
+   * @param value number
+   */
   const addToValue = (value) => {
     value = Math.round((value + 0.1) * 10) / 10;
 
-    if(value > 1) {
-      value = 1;
+    if (value > 0.9) {
+      value = 0.9;
     }
-
-    document.dispatchEvent(new CustomEvent('onUpdateNumberInput', {
-      detail: {
-        value:       value,
-        weather:     props.weather,
-        observation: props.observation
-      }
-    }));
 
     setItemState(value);
   };
 
+  /**
+   * @param value number
+   */
   const subtractFromValue = (value) => {
     value = Math.round((value - 0.1) * 10) / 10;
 
-    if(value < 0) {
-      value = 0;
+    if (value < 0.1) {
+      value = 0.1;
     }
 
-    document.dispatchEvent(new CustomEvent('onUpdateNumberInput', {
-      detail: {
-        value:       value,
-        weather:     props.weather,
-        observation: props.observation
-      }
-    }));
     setItemState(value);
   };
 
   useEffect(() => {
-    console.log(itemState)
+    document.dispatchEvent(new CustomEvent('onUpdateNumberInput', {
+      detail: {
+        value:       itemState,
+        weather:     props.weather,
+        observation: props.observation
+      }
+    }));
   },[itemState]);
 
   return (
