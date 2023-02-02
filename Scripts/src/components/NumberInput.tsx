@@ -39,7 +39,7 @@ function NumberInput(props) {
         observation: props.observation
       }
     }));
-  },[itemState]);
+  }, [itemState]);
 
   return (
     <p>

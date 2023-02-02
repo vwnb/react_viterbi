@@ -7,9 +7,24 @@ import Viterbi from "./Viterbi";
 function ViterbiApp(props) {
 
   const [state, setState] = useState(props.state);
+  const allowedValues = ["sleep", "walk", "shopp", "clean"];
 
   document.addEventListener('onUpdateNumberInput', (e) => {
     state.input.emission_probability[e.detail.weather][e.detail.observation] = e.detail.value;
+    setState(Viterbi(state));
+  });
+
+  document.addEventListener('onUpdateTextInput', (e) => {
+    for (const element of e.detail.value) {
+      if (allowedValues.indexOf(element) === -1) {
+        alert("Hey, allowed values are " + allowedValues.join(', '));
+        return;
+      }
+    }
+
+    console.log(e.detail.value);
+
+    state.input.observations = e.detail.value;
     setState(Viterbi(state));
   });
 

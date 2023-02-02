@@ -11,19 +11,25 @@
                 margin: 0;
             }
 
+            body {
+                background:linear-gradient(#fff, #eee);
+                min-height: 100vh;
+            }
+
             p {
                 margin: 0.5em 0;
             }
 
-            button {
+            h3 {
+                margin: 1em 0 0.5em;
+            }
+
+            button, input[type="submit"] {
                 padding: 0 0.25em;
             }
 
             .poem {
                 padding:2em;
-            }
-
-            .poem p {
                 width: 50%;
             }
 
@@ -49,12 +55,15 @@
                 display: block;
             }
 
-            @media screen and (max-width: 900px) {
-                .poem p {
-                    width:auto;
-                }
+            code, textarea {
+                background: white;
+                padding: 0 0.25em;
+                border: 1px solid gray;
+                border-radius: 3px;
+            }
 
-                .controls {
+            @media screen and (max-width: 900px) {
+                .poem, .controls {
                     width:auto;
                     left: 0;
                 }
