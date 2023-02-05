@@ -32,7 +32,7 @@ function ViterbiApp(props) {
   return (
     <div>
       <div className="poem">
-        <p>Your day consisted of {state.input.observations.join('ing, ')}.</p> 
+        <p>Your day consisted of {state.input.observations.join('ing, ')}ing.</p> 
         {state.output.map(state => (
             <p key={state.key}>While {state.observation}ing, it was {state.name === 'sunny' ? state.name + ". 🌞" : state.name + ". 🌧️"}</p>
         ))}

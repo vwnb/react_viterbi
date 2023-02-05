@@ -5,6 +5,14 @@ function TextInput(props) {
 
   const [itemState, setItemState] = useState(props.value);
 
+  const dispatchUpdate = () => {
+    document.dispatchEvent(new CustomEvent("onUpdateTextInput", {
+      detail: {
+        value: itemState,
+      }
+    }));
+  }
+
   /**
    * Don't reload page
    */
@@ -17,16 +25,25 @@ function TextInput(props) {
    */
   const handleUpdate = (event) => {
     itemState[event.target.getAttribute("name")] = event.target.value;
+    dispatchUpdate();
+  }
 
-    document.dispatchEvent(new CustomEvent("onUpdateTextInput", {
-      detail: {
-        value: itemState,
-      }
-    }));
+  const pushValue = () => {
+    itemState.push("sleep");
+    dispatchUpdate();
+  }
+
+  const popValue = () => {
+    if(itemState.length >= 3){
+      itemState.pop();
+      dispatchUpdate();
+    }
   }
 
   return (
     <form onSubmit={handleSubmit} className={props.valid ? "valid" : "invalid"}>
+      <button onClick={() => pushValue()}>+</button>&nbsp;
+      <button onClick={() => popValue()}>-</button>&nbsp;
       {itemState.map((item, index) =>
         <span>
           <select onChange={handleUpdate} key={index} defaultValue={item} name={index}>
