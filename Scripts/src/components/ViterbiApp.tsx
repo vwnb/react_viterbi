@@ -7,7 +7,9 @@ import Viterbi from "./Viterbi";
 function ViterbiApp(props) {
 
   const [state, setState] = useState(props.state);
-  const allowedValues = ["sleep", "walk", "shopp", "clean"];
+  
+  const allowedValues  = ["sleep", "walk", "shopp", "clean"];
+  const [textInputValid, setTextInputValid] = useState(true);
 
   document.addEventListener('onUpdateNumberInput', (e) => {
     state.input.emission_probability[e.detail.weather][e.detail.observation] = e.detail.value;
@@ -17,15 +19,14 @@ function ViterbiApp(props) {
   document.addEventListener('onUpdateTextInput', (e) => {
     for (const element of e.detail.value) {
       if (allowedValues.indexOf(element) === -1) {
-        alert("Hey, allowed values are " + allowedValues.join(', '));
+        setTextInputValid(false);
         return;
       }
     }
 
-    console.log(e.detail.value);
-
     state.input.observations = e.detail.value;
     setState(Viterbi(state));
+    setTextInputValid(true);
   });
 
   return (
@@ -42,7 +43,7 @@ function ViterbiApp(props) {
         <p>Setting the emission probabilities to extremes like 0.1 and 0.9 has a less extreme effect than setting them around 0.2 steps away from each other. This is useful when modeling a very sunny or very rainy weather.</p>
         <p>The <a href="https://en.wikipedia.org/wiki/Hidden_Markov_model">Hidden Markov Models</a> act in mysterious ways but the algorithm is pure! Same input, same output.</p>
      </div>
-      <Controls input={state.input} />
+      <Controls input={state.input} textInputValid={textInputValid} />
     </div>
   );
 }

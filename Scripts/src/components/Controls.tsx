@@ -8,6 +8,7 @@ function Controls(props) {
   const [state, setState] = useState(props.input);
   const [emissionProbability, setEmissionProbability] = useState(props.input.emission_probability);
   const [observations, setObservations] = useState(props.input.observations);
+
   const [display, setDisplay] = useState(false);
 
   const toggleDisplay = () => {
@@ -28,7 +29,7 @@ function Controls(props) {
         <NumberInput weather="sunny" observation="shopp" value={emissionProbability.sunny.shopp} />
         <NumberInput weather="sunny" observation="sleep" value={emissionProbability.sunny.sleep} />
         <h3>Your diary</h3>
-        <TextInput value={observations} />
+        <TextInput value={observations} valid={props.textInputValid} />
       </div>
     </div>
   );

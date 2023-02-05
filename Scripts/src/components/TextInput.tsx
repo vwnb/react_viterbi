@@ -1,17 +1,9 @@
 import * as React from "react";
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 function TextInput(props) {
 
   const [itemState, setItemState] = useState(props.value);
-
-  const updateValue = (value) => {
-    if (typeof value === "string") {
-      value = value.split(",");
-    }
-
-    setItemState(value);
-  }
 
   /**
    * Don't reload page
@@ -24,28 +16,25 @@ function TextInput(props) {
    * Update value
    */
   const handleUpdate = (event) => {
-    updateValue(event.target.value)
-  }
+    let value = event.target.value.split(",");
 
-  /**
-   * Update visible value and bubble it up but don't reload page
-   */
-  const handleClick = (event) => {
-    updateValue(itemState);
+    if (typeof value === "string") {
+      value = value.split(",");
+    }
 
-    document.dispatchEvent(new CustomEvent('onUpdateTextInput', {
+    setItemState(value);
+
+    document.dispatchEvent(new CustomEvent("onUpdateTextInput", {
       detail: {
-        value: itemState,
+        value: value,
       }
     }));
-
-    event.preventDefault();
   }
 
   return (
-    <form onSubmit={handleSubmit}> 
-      <textarea value={itemState} onChange={handleUpdate}></textarea>&nbsp;
-      <input type="submit" value="Update" onClick={handleClick} />
+    <form onSubmit={handleSubmit} className={props.valid ? "valid" : "invalid"}>
+      <textarea value={itemState} onChange={handleUpdate}></textarea>
+      {props.valid === false ? <p>Sorry, the value is invalid. Also sorry, the developer didn't provide a hint or such.</p> : ""}
     </form>
   );
 }
