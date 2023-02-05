@@ -16,25 +16,27 @@ function TextInput(props) {
    * Update value
    */
   const handleUpdate = (event) => {
-    let value = event.target.value.split(",");
-
-    if (typeof value === "string") {
-      value = value.split(",");
-    }
-
-    setItemState(value);
+    itemState[event.target.getAttribute("name")] = event.target.value;
 
     document.dispatchEvent(new CustomEvent("onUpdateTextInput", {
       detail: {
-        value: value,
+        value: itemState,
       }
     }));
   }
 
   return (
     <form onSubmit={handleSubmit} className={props.valid ? "valid" : "invalid"}>
-      <textarea value={itemState} onChange={handleUpdate}></textarea>
-      {props.valid === false ? <p>Sorry, the value is invalid. Also sorry, the developer didn't provide a hint or such.</p> : ""}
+      {itemState.map((item, index) =>
+        <span>
+          <select onChange={handleUpdate} key={index} defaultValue={item} name={index}>
+            <option value="sleep">sleep</option>
+            <option value="walk">walk</option>
+            <option value="clean">clean</option>
+            <option value="shopp">shop</option>
+          </select>&nbsp;
+        </span>
+      )}
     </form>
   );
 }
