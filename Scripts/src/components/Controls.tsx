@@ -1,12 +1,13 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
-import NumberInput from "./NumberInput";
+import EmissionInput from "./EmissionInput";
 import TextInput from "./TextInput";
 
 function Controls(props) {
 
   const [state, setState] = useState(props.input);
   const [emissionProbability, setEmissionProbability] = useState(props.input.emission_probability);
+  const [transitionProbability, setTransitionProbability] = useState(props.input.transition_probability);
   const [observations, setObservations] = useState(props.input.observations);
 
   const [display, setDisplay] = useState(false);
@@ -20,14 +21,14 @@ function Controls(props) {
       <p className="toggle"><button onClick={() => toggleDisplay()}>Toggle <br/> controls</button></p>
       <div className={display ? "controls visible" : "controls"}>
         <h3>Emission probabilities</h3>
-        <NumberInput weather="rainy" observation="clean" value={emissionProbability.rainy.clean} />
-        <NumberInput weather="rainy" observation="walk"  value={emissionProbability.rainy.walk} />
-        <NumberInput weather="rainy" observation="shopp" value={emissionProbability.rainy.shopp} />
-        <NumberInput weather="rainy" observation="sleep" value={emissionProbability.rainy.sleep} />
-        <NumberInput weather="sunny" observation="clean" value={emissionProbability.sunny.clean} />
-        <NumberInput weather="sunny" observation="walk" value={emissionProbability.sunny.walk} />
-        <NumberInput weather="sunny" observation="shopp" value={emissionProbability.sunny.shopp} />
-        <NumberInput weather="sunny" observation="sleep" value={emissionProbability.sunny.sleep} />
+        <EmissionInput weather="rainy" observation="clean" value={emissionProbability.rainy.clean} />
+        <EmissionInput weather="rainy" observation="walk"  value={emissionProbability.rainy.walk} />
+        <EmissionInput weather="rainy" observation="shopp" value={emissionProbability.rainy.shopp} />
+        <EmissionInput weather="rainy" observation="sleep" value={emissionProbability.rainy.sleep} />
+        <EmissionInput weather="sunny" observation="clean" value={emissionProbability.sunny.clean} />
+        <EmissionInput weather="sunny" observation="walk" value={emissionProbability.sunny.walk} />
+        <EmissionInput weather="sunny" observation="shopp" value={emissionProbability.sunny.shopp} />
+        <EmissionInput weather="sunny" observation="sleep" value={emissionProbability.sunny.sleep} />
         <h3>Your diary</h3>
         <TextInput value={observations} valid={props.textInputValid} />
       </div>

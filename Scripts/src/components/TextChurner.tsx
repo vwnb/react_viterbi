@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useState, useEffect } from 'react';
-import NumberInput from './NumberInput'
+import NumberInput from './EmissionInput'
 
 /**
  * A class for simply creating that one spaghetti paragraph
@@ -14,7 +14,7 @@ function TextChurner(props) {
 
   const [emissionProbabilityText, setEmissionProbabilityText] = useState('');
 
-  document.addEventListener('onUpdateNumberInput', () => {
+  document.addEventListener('onUpdateEmissionInput', () => {
     setEmissionProbabilityText(getEmissionProbabilityText());
   });
 

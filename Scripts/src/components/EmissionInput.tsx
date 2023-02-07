@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useState, useEffect } from 'react';
 
-function NumberInput(props) {
+function EmissionInput(props) {
 
   const [itemState, setItemState] = useState(props.value);
 
@@ -32,7 +32,7 @@ function NumberInput(props) {
   };
 
   useEffect(() => {
-    document.dispatchEvent(new CustomEvent('onUpdateNumberInput', {
+    document.dispatchEvent(new CustomEvent('onUpdateEmissionInput', {
       detail: {
         value:       itemState,
         weather:     props.weather,
@@ -50,4 +50,4 @@ function NumberInput(props) {
   );
 }
 
-export default NumberInput;
+export default EmissionInput;
