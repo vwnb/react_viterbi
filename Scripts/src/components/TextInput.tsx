@@ -45,8 +45,8 @@ function TextInput(props) {
       <button onClick={() => pushValue()}>+</button>&nbsp;
       <button onClick={() => popValue()}>-</button>&nbsp;
       {itemState.map((item, index) =>
-        <span>
-          <select onChange={handleUpdate} key={index} defaultValue={item} name={index}>
+        <span key={index}>
+          <select onChange={handleUpdate} defaultValue={item} name={index}>
             <option value="sleep">sleep</option>
             <option value="walk">walk</option>
             <option value="clean">clean</option>

@@ -9,7 +9,6 @@ function ViterbiApp(props) {
   const [state, setState] = useState(props.state);
 
   document.addEventListener('onUpdateTransitionInput', (e) => {
-    console.log(e.detail);
     state.input.transition_probability[e.detail.from][e.detail.to] = e.detail.value;
     setState(Viterbi(state));
   });
