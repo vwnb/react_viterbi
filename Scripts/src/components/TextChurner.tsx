@@ -7,21 +7,11 @@ import NumberInput from './EmissionInput'
  */
 function TextChurner(props) {
 
-  const [state, setState] = useState([
-    [{'key': 1}, {'value': 10}],
-    [{'key': 2}, {'value': 20}],
-  ]);
-
   const [emissionProbabilityText, setEmissionProbabilityText] = useState('');
 
   document.addEventListener('onUpdateEmissionInput', () => {
     setEmissionProbabilityText(getEmissionProbabilityText());
   });
-
-  useEffect(() => {
-    setState(state);
-    setEmissionProbabilityText(getEmissionProbabilityText());
-  }, [state])
 
   const getEmissionProbabilityText = () => {
     let emissionProbabilityText = '';

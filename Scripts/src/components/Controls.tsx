@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import EmissionInput from "./EmissionInput";
+import TransitionInput from "./TransitionInput";
 import TextInput from "./TextInput";
 
 function Controls(props) {
@@ -29,6 +30,11 @@ function Controls(props) {
         <EmissionInput weather="sunny" observation="walk" value={emissionProbability.sunny.walk} />
         <EmissionInput weather="sunny" observation="shopp" value={emissionProbability.sunny.shopp} />
         <EmissionInput weather="sunny" observation="sleep" value={emissionProbability.sunny.sleep} />
+        <h3>Transition probabilities</h3>
+        <TransitionInput from="sunny" to="rainy" value={transitionProbability.sunny.rainy} />
+        <TransitionInput from="sunny" to="sunny" value={transitionProbability.sunny.sunny} />
+        <TransitionInput from="rainy" to="rainy" value={transitionProbability.rainy.rainy} />
+        <TransitionInput from="rainy" to="sunny" value={transitionProbability.rainy.sunny} />
         <h3>Your diary</h3>
         <TextInput value={observations} valid={props.textInputValid} />
       </div>
