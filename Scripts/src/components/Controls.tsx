@@ -6,7 +6,6 @@ import TextInput from "./TextInput";
 
 function Controls(props) {
 
-  const [state, setState] = useState(props.input);
   const [emissionProbability, setEmissionProbability] = useState(props.input.emission_probability);
   const [transitionProbability, setTransitionProbability] = useState(props.input.transition_probability);
   const [observations, setObservations] = useState(props.input.observations);
