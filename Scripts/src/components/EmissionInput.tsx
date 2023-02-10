@@ -1,14 +1,11 @@
 import * as React from "react";
 import { useState, useEffect } from 'react';
 
-function EmissionInput(props) {
+const EmissionInput = (props: { value: number, weather: string, observation: string }) => {
 
   const [itemState, setItemState] = useState(props.value);
 
-  /**
-   * @param value number
-   */
-  const addToValue = (value) => {
+  const addToValue = (value: number) => {
     value = Math.round((value + 0.1) * 10) / 10;
 
     if (value > 0.9) {
@@ -18,10 +15,7 @@ function EmissionInput(props) {
     setItemState(value);
   };
 
-  /**
-   * @param value number
-   */
-  const subtractFromValue = (value) => {
+  const subtractFromValue = (value: number) => {
     value = Math.round((value - 0.1) * 10) / 10;
 
     if (value < 0.1) {

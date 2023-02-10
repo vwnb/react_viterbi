@@ -4,7 +4,7 @@ import TextChurner from "./TextChurner";
 import Controls from "./Controls";
 import Viterbi from "./Viterbi";
 
-function ViterbiApp(props) {
+const ViterbiApp = (props: { state: {} }) => {
 
   const [state, setState] = useState(props.state);
 

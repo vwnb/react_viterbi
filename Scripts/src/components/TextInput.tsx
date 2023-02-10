@@ -1,7 +1,7 @@
 import * as React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
-function TextInput(props) {
+const TextInput = (props: { value: Array<string> }) => {
 
   const [itemState, setItemState] = useState(props.value);
 
@@ -41,12 +41,12 @@ function TextInput(props) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className={props.valid ? "valid" : "invalid"}>
+    <form onSubmit={handleSubmit}>
       <button onClick={() => pushValue()}>+</button>&nbsp;
       <button onClick={() => popValue()}>-</button>&nbsp;
       {itemState.map((item, index) =>
         <span key={index}>
-          <select onChange={handleUpdate} defaultValue={item} name={index}>
+          <select onSelect={handleUpdate} defaultValue={item} name={index}>
             <option value="sleep">sleep</option>
             <option value="walk">walk</option>
             <option value="clean">clean</option>

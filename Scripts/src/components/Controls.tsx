@@ -35,7 +35,7 @@ function Controls(props) {
         <TransitionInput from="rainy" to="rainy" value={transitionProbability.rainy.rainy} />
         <TransitionInput from="rainy" to="sunny" value={transitionProbability.rainy.sunny} />
         <h3>Your diary</h3>
-        <TextInput value={observations} valid={props.textInputValid} />
+        <TextInput value={observations} />
       </div>
     </div>
   );
