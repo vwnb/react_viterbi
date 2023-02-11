@@ -35,7 +35,7 @@ let initState = {
             'sunny' : {'walk': 0.3, 'shopp': 0.2, 'clean': 0.2, 'sleep': 0.1},
         }
     },
-    output: []
+    output: [{}]
 }
 
 var state = Viterbi(initState);

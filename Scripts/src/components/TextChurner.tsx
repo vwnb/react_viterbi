@@ -5,7 +5,7 @@ import NumberInput from './EmissionInput'
 /**
  * A class for simply creating that one spaghetti paragraph
  */
-function TextChurner(props) {
+function TextChurner(props = {emissionProbability: {}}) {
 
   const [emissionProbabilityText, setEmissionProbabilityText] = useState('');
 

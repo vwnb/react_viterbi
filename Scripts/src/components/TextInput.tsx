@@ -20,9 +20,6 @@ const TextInput = (props: { value: Array<string> }) => {
     event.preventDefault();
   }
 
-  /**
-   * Update value
-   */
   const handleUpdate = (event) => {
     itemState[event.target.getAttribute("name")] = event.target.value;
     dispatchUpdate();
@@ -46,7 +43,7 @@ const TextInput = (props: { value: Array<string> }) => {
       <button onClick={() => popValue()}>-</button>&nbsp;
       {itemState.map((item, index) =>
         <span key={index}>
-          <select onSelect={handleUpdate} defaultValue={item} name={index}>
+          <select onSelect={handleUpdate} defaultValue={item}>
             <option value="sleep">sleep</option>
             <option value="walk">walk</option>
             <option value="clean">clean</option>

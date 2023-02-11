@@ -4,7 +4,35 @@ import EmissionInput from "./EmissionInput";
 import TransitionInput from "./TransitionInput";
 import TextInput from "./TextInput";
 
-function Controls(props) {
+function Controls(props = {
+  input: {
+    emission_probability: {
+      rainy: {
+        clean: 0,
+        walk: 0,
+        shopp: 0,
+        sleep: 0,
+      },
+      sunny: {
+        clean: 0,
+        walk: 0,
+        shopp: 0,
+        sleep: 0,
+      }
+    },
+    transition_probability: {
+      sunny: {
+        rainy: 0,
+        sunny: 0
+      },
+      rainy: {
+        rainy: 0,
+        sunny: 0
+      },
+    },
+    observations: [''],
+  }
+}) {
 
   const [emissionProbability, setEmissionProbability] = useState(props.input.emission_probability);
   const [transitionProbability, setTransitionProbability] = useState(props.input.transition_probability);
